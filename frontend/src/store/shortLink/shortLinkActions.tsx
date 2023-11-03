@@ -73,7 +73,7 @@ export const generateShortMulti = createAsyncThunk<void, any>(
         form: form.form,
         idDoc: idDoc,
       };
-      await axios.post("http://localhost:8080/api/save", { data });
+      await axios.post("http://138.68.64.63:8080/api/save", { data });
       await saveLink(url, newUrl, idDoc);
       thunkAPI.dispatch(multiLoading(false));
       thunkAPI.dispatch(showLinks(form?.user.uid));
@@ -108,7 +108,9 @@ export const deleteshortUrl = createAsyncThunk<void, any>(
       thunkAPI.dispatch(deleteLoading(true));
       await deleteLink(data?.id);
       await deleteMultiLinks(data?.idmulti);
-      await axios.delete(`http://localhost:8080/api/delete/${data?.idmulti}`);
+      await axios.delete(
+        `http://138.68.64.63:8080/api/delete/${data?.idmulti}`
+      );
       thunkAPI.dispatch(showLinks(data?.user.uid));
       thunkAPI.dispatch(deleteLoading(false));
     } catch (error) {
@@ -137,7 +139,7 @@ export const UrlUpdate = createAsyncThunk<void, any>(
     try {
       thunkAPI.dispatch(getUpdateLoading(true));
       await shortUrlUpdate(data.id, data.form);
-      await axios.put("http://localhost:8080/api/update", { data });
+      await axios.put("http://138.68.64.63:8080/api/update", { data });
       thunkAPI.dispatch(getUpdateLoading(false));
       thunkAPI.dispatch(showLinks(data?.user.uid));
     } catch (error) {
