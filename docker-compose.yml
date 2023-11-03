@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+#  small commit 
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 2717:27017
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    ports:
+      - 80:80
+    restart: unless-stopped
+    stdin_open: true
+
