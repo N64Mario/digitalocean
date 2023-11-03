@@ -7,7 +7,7 @@ import { EventEmitter } from "events";
 const myEmitter = new EventEmitter();
 myEmitter.setMaxListeners(2000);
 const app = express();
-app.use(cors({ origin: "http://138.68.64.63" }));
+app.use(cors({ origin: ["http://138.68.64.63", "*"] }));
 app.use(helmet());
 app.use(compression());
 const routes = express.Router();
