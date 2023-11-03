@@ -3,10 +3,16 @@ WORKDIR /app
 COPY package*.json /app/
 COPY . /app/
 RUN npm install
-#RUN npm ci --only=production
-#RUN  npm install --production --silent && mv node_modules ../
-# ENV BACKEND_URL="http://localhost:8080/api"
-# ENV BACKEND_URL="http://139.162.254.55:8080/api"
-# ENV BACKEND_URL="http://localhost:8080/api"
+# Install Redis
+RUN apk add --no-cache redis
+
+# Expose the ports (Node.js and Redis)
 EXPOSE 8080
-CMD ["npm", "start"]
+EXPOSE 6379
+
+# Copy the rest of your application code to the container
+COPY . /app/
+
+# Start Redis and your Node.js application
+CMD ["sh", "-c", "redis-server & npm start"]
+

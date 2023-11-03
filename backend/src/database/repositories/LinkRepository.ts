@@ -3,7 +3,7 @@ import { database } from "../../../src/config/firebase";
 import Redis from "ioredis";
 import { error, log } from "console";
 const redis = new Redis({
-  host: "138.68.64.63",
+  host: "redis",
   port: 6379,
 });
 
