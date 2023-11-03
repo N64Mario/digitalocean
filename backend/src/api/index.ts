@@ -3,11 +3,10 @@ import cors from "cors";
 import bodyparser from "body-parser";
 import helmet from "helmet";
 import compression from "compression";
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 const myEmitter = new EventEmitter();
-myEmitter.setMaxListeners(200);
+myEmitter.setMaxListeners(2000);
 const app = express();
-
 app.use(cors({ origin: true }));
 app.use(helmet());
 app.use(compression());

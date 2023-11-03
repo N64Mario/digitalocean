@@ -10,7 +10,7 @@ function Detail() {
     if (parameter) {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/get/${parameter}`
+          `http://138.68.64.63:8080/api/get/${parameter}`
         );
         window.location.href = response.data.link;
       } catch (error) {
