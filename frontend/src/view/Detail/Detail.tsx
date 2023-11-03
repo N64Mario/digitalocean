@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function Detail() {
   const { parameter } = useParams();
-  const [link, setLink] = useState(null); // Initialize with null
   const dataFetchedRef = useRef(false);
   const fetchData = async () => {
     if (parameter) {

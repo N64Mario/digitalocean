@@ -7,7 +7,7 @@ import { EventEmitter } from "events";
 const myEmitter = new EventEmitter();
 myEmitter.setMaxListeners(2000);
 const app = express();
-app.use(cors({ origin: true }));
+app.use(cors({ origin: "*" }));
 app.use(helmet());
 app.use(compression());
 const routes = express.Router();
